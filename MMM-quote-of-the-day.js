@@ -42,6 +42,7 @@ Module.register('MMM-quote-of-the-day', {
         }else{
             quoteTextDiv.innerHTML = "Loading";
             quoteAuthorDiv.innerHTML = "";
+            this.scheduleUpdate(30000) //30s update
         }
 
         wrapper.appendChild(quoteTextDiv);
