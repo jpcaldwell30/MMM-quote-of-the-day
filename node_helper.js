@@ -48,8 +48,13 @@ module.exports = NodeHelper.create({
             })
             .catch(function (error) {
                 console.log(error);
+                if (retryCount < 10) {
+                    retryCount++;
+                    setInterval(function() {
+                        self.getNewQuote();
+                      }, 30000); //30s retry
+                }
             });
-
     },
 
     socketNotificationReceived: function (notification, payload) {
